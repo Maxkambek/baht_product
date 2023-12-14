@@ -1,5 +1,11 @@
 from rest_framework import serializers
-from .models import Account, VerifyPhone, Country, Region, District
+from .models import Account, VerifyPhone, Country, Region, District, Maxfiylik
+
+
+class MaxfiylikSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Maxfiylik
+        fields = ['id', 'file']
 
 
 class CountrySerializer(serializers.ModelSerializer):

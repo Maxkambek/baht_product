@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Account, Country, Region, District, VerifyPhone, PaymentAccounts
+from .models import Account, Country, Region, District, VerifyPhone, PaymentAccounts, Maxfiylik
+
+
+@admin.register(Maxfiylik)
+class MaxfiylikAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(PaymentAccounts)

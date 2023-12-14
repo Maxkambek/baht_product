@@ -1,13 +1,18 @@
 from django.contrib.auth import authenticate
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
-from .models import Country, Region, District, Account, VerifyPhone
+from .models import Country, Region, District, Account, VerifyPhone, Maxfiylik
 from .serializer import CountrySerializer, RegionSerializer, DistrictSerializer, RegisterSerializer, LoginSerializer, \
-    VerifyPhoneSerializer, AccountSerializer, VerifyPhoneSerializer2
+    VerifyPhoneSerializer, AccountSerializer, VerifyPhoneSerializer2, MaxfiylikSerializer
 from rest_framework import generics, status, permissions
 from rest_framework.views import Response
 from random import randint
 from .utils import verify
+
+
+class MaxfiylikListAPIView(generics.ListAPIView):
+    queryset = Maxfiylik.objects.all()
+    serializer_class = MaxfiylikSerializer
 
 
 class RegisterAPI(generics.GenericAPIView):
@@ -158,5 +163,3 @@ class AccountRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
         instance = self.request.user
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
