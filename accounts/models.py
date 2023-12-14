@@ -86,3 +86,7 @@ class VerifyPhone(models.Model):
 class PaymentAccounts(models.Model):
     amount = models.CharField(max_length=123)
     account = models.ForeignKey(Account, on_delete=models.CASCADE)
+
+
+class Maxfiylik(models.Model):
+    file = models.FileField(upload_to='files/')
