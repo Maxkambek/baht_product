@@ -9,9 +9,11 @@ django-js-asset==2.1.0
 django-modeltranslation==0.18.11
 djangorestframework==3.14.0
 drf-yasg==1.21.7
+gunicorn==21.2.0
 idna==3.4
 inflection==0.5.1
 packaging==23.2
+payme-pkg==2.6.6
 Pillow==10.1.0
 pytz==2023.3.post1
 PyYAML==6.0.1

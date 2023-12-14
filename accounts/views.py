@@ -1,14 +1,12 @@
 from django.contrib.auth import authenticate
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.models import Token
-
 from .models import Country, Region, District, Account, VerifyPhone
 from .serializer import CountrySerializer, RegionSerializer, DistrictSerializer, RegisterSerializer, LoginSerializer, \
     VerifyPhoneSerializer, AccountSerializer, VerifyPhoneSerializer2
 from rest_framework import generics, status, permissions
 from rest_framework.views import Response
 from random import randint
-
 from .utils import verify
 
 
@@ -108,6 +106,7 @@ class LoginAPI(generics.GenericAPIView):
         data['success'] = True
         data['is_paid'] = user.is_paid
         data['is_completed'] = user.is_completed
+        data['is_completed_110'] = user.is_completed_110
         return Response(data, status=status.HTTP_200_OK)
 
 
@@ -159,3 +158,5 @@ class AccountRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
         instance = self.request.user
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+

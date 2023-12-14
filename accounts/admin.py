@@ -9,7 +9,7 @@ class PaymentAccountsAdmin(admin.ModelAdmin):
 
 @admin.register(Account)
 class AccountAdmin(admin.ModelAdmin):
-    pass
+    list_filter = ['phone']
 
 
 @admin.register(Country)

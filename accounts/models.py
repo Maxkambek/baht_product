@@ -62,6 +62,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=False)
     is_paid = models.BooleanField(default=False)
     is_completed = models.BooleanField(default=False)
+    is_completed_110 = models.BooleanField(default=False)
 
     objects = AccountManager()
     USERNAME_FIELD = 'phone'

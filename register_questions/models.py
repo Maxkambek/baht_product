@@ -1,5 +1,4 @@
 from django.db import models
-
 from accounts.models import Account
 
 
@@ -21,7 +20,7 @@ class RegisterQuestion(models.Model):
 
 
 class RegisterQuestionVariant(models.Model):
-    question = models.ForeignKey(RegisterQuestion, on_delete=models.CASCADE)
+    question = models.ForeignKey(RegisterQuestion, on_delete=models.CASCADE, related_name='my_variant_questions')
     index_question = models.CharField(max_length=123, null=True)
     variant_name = models.CharField(max_length=333, null=True)
 

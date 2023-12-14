@@ -1,5 +1,6 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from accounts.models import Account
 from .models import Question, UserQuestions
 from .serializer import QuestionSerializer, QuestionSerializer2, UserQuestionsSerializer
 from rest_framework import generics, permissions, authentication
@@ -32,9 +33,10 @@ class CheckTestAPIView(APIView):
                 answer=data1
             )
             new.save()
-        if data == 110:
-            user.is_completed = True
-            user.save()
+        if data == 109:
+            acc = Account.objects.filter(id=user).first()
+            acc.is_completed_110 = True
+            acc.save()
         return Response('success', status=200)
 
 
@@ -44,5 +46,5 @@ class UserQuestionsListAPIView(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        queryset = UserQuestions.objects.filter(user=self.request.user, answer=True)
+        queryset = UserQuestions.objects.filter(user=self.request.user)
         return queryset
